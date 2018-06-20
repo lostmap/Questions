@@ -1,0 +1,47 @@
+<div class="row comment">
+    <div class="col-12">
+        <div class="row">
+            <div class="col-12">
+                <div class="media">
+                    <div class="mr-3">
+                        <div class="row">
+                            <div class="col">
+                                <img class="rounded-circle ml-1" src="{{ answer.author.upload.url }}" alt="no image" style="width: 100px; height: 100px;">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <p class="text-center my-1"><a href="{% url 'profile_name' question.author.user.username %}">{{ answer.author|truncatechars_html:15 }}</a></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <p class="text-center mb-1 font-italic">{{ answer.date|time:"H:i" }}</p>
+                            </div>
+                        </div> 
+                        <div class="row vertical-counter justify-content-center">
+                            <div class="col-10 mr-2">
+                                <div class="form-control  text-center merge-bottom-input" name="first" disabled="disabled">1</div>
+                                <div class="btn-group btn-block" role="group" aria-label="plus-minus">
+                                    <button type="button" class="btn  btn-outline-danger minus-button merge-top-left-button"><i class="far fa-thumbs-down fa-lg"></i></button>
+                                    <button type="button" class="btn  btn-outline-success plus-button merge-top-right-button"><i class="far fa-thumbs-up fa-lg"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="media-body">
+                    <p>{{ answer.text }}</p>
+                </div>
+                </div>
+            </div>
+        </div>
+        {% if answer.is_correct %}
+            <div class="row justify-content-end">
+                <div class="col-5 col-lg-2 mr-lg-5 mr-xl-3">
+                    <button type="button" class="btn btn-labeled btn-success" style="display"><span class="btn-label"><i class="fas fa-check"></i></span>Correct
+                    </button>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</div>

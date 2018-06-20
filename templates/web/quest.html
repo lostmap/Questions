@@ -1,0 +1,17 @@
+{% extends "web/base.html" %}
+{% block title %}Askme|Qustion{% endblock %}
+{% block content %}
+    {% include "web/blocks/question.html" %}
+
+    {% for answer in answers %}
+        {% include "web/blocks/answer.html" %} 
+    {% endfor %}
+    {% if auth.is_authenticated %}
+    	{% include "web/blocks/answer_form.html" %}
+    {% endif %}
+{% endblock %}
+{% block sidebar %}
+    {% include "web/blocks/sidebar.html" %}
+{% endblock %}
+
+

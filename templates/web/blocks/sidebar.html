@@ -1,0 +1,12 @@
+<div class="col-md-3 d-none d-md-block">
+    <h3>Popular Tags</h3>
+        {% for tag in tags  %}
+            <a href="{% url 'question_tag' tag %}" class="badge badge-pill badge-info">{{tag}}</a>
+        {% endfor %}
+    <h3>Top5 Members</h3>
+    <ol>
+        {% for user in users  %}
+            <li><a href="{% url 'profile_name' user %}">{{user|truncatechars_html:25}}</a></li>
+        {% endfor %}
+    </ol>
+</div>

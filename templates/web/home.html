@@ -1,0 +1,16 @@
+{% extends "web/base.html" %}
+{% block title %}Askme|New{% endblock %}
+{% block head %}New Questions{% endblock %}
+{% block content %}
+    {% for question in questions %}
+        {% include "web/blocks/question.html" %}
+    {% endfor %}
+{% endblock %}
+{% block paginator %}
+    {% include "web/blocks/paginator.html" %}
+{% endblock %}
+{% block sidebar %}
+    {% include "web/blocks/sidebar.html" %}
+{% endblock %}
+
+

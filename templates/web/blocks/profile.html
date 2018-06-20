@@ -1,0 +1,54 @@
+<div class="row question">
+    <div class="col-12">
+        <div class="row">
+            <div class="col-12">
+                <div class="media">
+                    <div class="mr-3">
+                        <div class="row">
+                            <div class="col-6">
+                                <img class="rounded-circle ml-1" src="{{ profile.customuser.upload.url }}" alt="no image" style="width: 100px; height: 100px;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ml-2 media-body">
+                        <hr/>
+                        <div class="row">
+                            <div class="col-4">
+                                <p class="my-auto font-weight-normal">First name:</p>
+                            </div>
+                            <div class="col-4">
+                                <p class="my-auto font-weight-normal">{{ profile.first_name }}</p>
+                            </div>
+                        </div>
+                        <hr/>
+                        <div class="row">
+                            <div class="col-4">
+                                <p class="my-auto font-weight-normal">Last name:</p>
+                            </div>
+                            <div class="col-4">
+                                <p class="my-auto font-weight-normal">{{ profile.last_name }}</p>
+                            </div>
+                        </div>
+                        <hr/>
+                        <div class="row">
+                            <div class="col-4">
+                                <p class="my-auto font-weight-normal">Email:</p>
+                            </div>
+                            <div class="col-4">
+                                <p class="my-auto font-weight-normal">{{ profile.email }}</p>
+                            </div>
+                        </div>
+                        <hr/>
+                        {% if profile.username == auth.username %}
+                            <div class="row">
+                                <div class="col-6">
+                                    <a class="btn btn-block btn-success" href="{% url 'profile_edit' %}">Edit</a>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

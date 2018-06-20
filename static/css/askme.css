@@ -1,0 +1,125 @@
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  line-height: 60px; /* Vertically center the text there */
+  background-color: #f5f5f5;
+}
+
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+body > .container {
+  padding: 60px 15px 0;
+}
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+code {
+  font-size: 80%;
+}
+.test{
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+}
+.question{ 
+    margin: 10px 0px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    padding: 10px;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+}
+.comment{ 
+    margin: 10px 0px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    padding: 10px;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+}
+.sidebar{   
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    padding: 10px;
+    /*box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);*/
+}
+.wrapper{   
+    margin-top:  0px;
+    margin-bottom:  0px;
+    border-radius: 10px;
+    padding: 0px 10px;
+    /*box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);*/
+}
+.register{ 
+    margin: 10px 0px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    padding: 24px;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+}
+.paginator{
+
+}
+/* horizontal button */
+.merge-left-button {
+  border-right: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.merge-middle-button {
+  border-left: 0;
+  border-right: 0;
+}
+.merge-right-button {
+  border-left: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+/* vertical button */
+.merge-bottom-input {
+  width: 90px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom:  0px;
+}
+
+.merge-top-left-button {
+  width: 45px;
+  border-right: 0px;
+  border-top-left-radius: 0;
+}
+
+.merge-top-right-button {
+  width: 46px;
+  border-left: 0px;
+  border-top-right-radius: 0;
+}
+/* success button */
+.btn-label {
+  position: relative;
+  left: -12px;
+  display: inline-block;
+  padding: 6px 12px;
+  background: rgba(0,0,0,0.15);
+  border-radius: 3px 0 0 3px;
+}
+.btn-labeled {
+  padding-top: 0;
+  padding-bottom: 0;
+}

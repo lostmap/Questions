@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+
+    <title>{% block title %}Askme{% endblock %}</title>
+    <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="{% static "css/open-iconic-bootstrap.min.css" %}">
+    <link rel="stylesheet" href="{% static "css/askme.css" %}"> 
+</head>
+
+<body>
+    <!-- Header -->
+    <header>    
+        <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
+            <a class="navbar-brand" href="{% url 'home' %}">Ask me</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'hot' %}">Hot<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'ask_page' %}">New</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav mr-right">
+                    <!--
+                    <li>
+                        <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+                    </li>
+                    -->
+                    {% if auth.is_authenticated %}
+                        <li class="my-2 my-md-0 mx-md-2">
+                            <a class="btn btn-outline-secondary col-12" href="{% url 'profile_name' auth.username %}"> {{ auth.username }} </a>
+                        </li>
+                        <li>
+                            <a class="btn btn-success col-12" href="{% url 'logout' %}?now={{ request.path | urlencode }}">Log out </a> 
+                        </li>
+                    {% else %}
+                        <li class="my-2 my-md-0 mx-md-2">
+                            <a class="btn btn-outline-success col-12" href="{% url 'register' %}">Sign up </a>
+                        </li>
+                        <li>
+                            <a class="btn btn-success col-12" href="{% url 'login' %}">Log in </a> 
+                        </li>
+                    {% endif %}    
+                        
+                        <!--
+                    <li class="dropdown">
+                        <button type="button" class="btn btn-success col-12" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Log in</button>
+                        <ul class="dropdown-menu dropdown-menu-right mt-2">
+                            <form class="px-4 py-3">
+                                <div class="form-group">
+                                    <label for="inputLogin">Login</label>
+                                    <input type="email" class="form-control" placeholder="Login">
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputEmail">Password</label>
+                                    <input type="email" class="form-control" id="inputEmail" placeholder="Email Address">
+                                </div>
+                                <button type="submit" class="btn btn-success col">Sign in</button>
+                            </form>
+                            <li class="divider"></li>
+                            <li class="dropdown-item text muted text-center">
+                                New around here? <a href="{% url 'register' %}">Sign up </a>
+                            </li>
+                        </ul>
+                        -->
+                        
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Content -->
+    <div class="container">
+        <div class="row mt-2">
+            <div class="col-md-9">
+                <div class="row">
+                    <div class="col-12">
+                        <h3>{% block head %}{% endblock %}</h3>
+                    </div>
+                </div>
+                {% block content %}{% endblock %}
+                {% block paginator %}{% endblock %}
+            </div>
+            {% block sidebar %}{% endblock %}
+        </div>
+    </div>
+
+    <script src="{% static "js/jquery.min.js" %}"></script>    
+    <script src="{% static "js/popper.min.js" %}"></script>
+    <script src="{% static "js/bootstrap.min.js" %}"></script>
+    <script src="{% static "js/fontawesome-all.min.js" %}"></script>
+</body>
+</html>
