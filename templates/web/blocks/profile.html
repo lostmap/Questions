@@ -39,6 +39,24 @@
                             </div>
                         </div>
                         <hr/>
+                        <div class="row">
+                            <div class="col-4">
+                                <p class="my-auto font-weight-normal">Questions asked:</p>
+                            </div>
+                            <div class="col-4">
+                                <p class="my-auto font-weight-normal">{{ asked }}</p>
+                            </div>
+                        </div>
+                        <hr/>
+                        <div class="row">
+                            <div class="col-4">
+                                <p class="my-auto font-weight-normal">Ranking:</p>
+                            </div>
+                            <div class="col-4">
+                                <p class="my-auto font-weight-normal">{{ ranking }}</p>
+                            </div>
+                        </div>
+                        <hr/>
                         {% if profile.username == auth.username %}
                             <div class="row">
                                 <div class="col-6">

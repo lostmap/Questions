@@ -97,11 +97,16 @@ def profile(request, profile_name):
     users = CustomUser.objects.top_5()
     tags = Tag.objects.popular()
     profile = CustomUser.objects.get_by_name(profile_name)
+    questions = Question.objects.filter(author__user__username=profile_name)
+    asked = questions.count()
+    ranking = CustomUser.objects.get_ranking(profile_name)
     context = {
         "auth" : request.user,
         "users": users,
         "profile": profile,
         "tags": tags,
+        "asked": asked,
+        "ranking": ranking,
     }
     return render(request, "web/profile.html", context)
 
@@ -168,4 +173,18 @@ def login(request):
 
 def logout(request):
     auth_logout(request)
+    return redirect(request.GET.get('now','/'))
+
+@login_required(login_url='/login/')
+def up(request, quest_id):
+    user = Question.objects.filter(id=quest_id)[0]
+    user.rathing +=1
+    user.save()
+    return redirect(request.GET.get('now','/'))
+
+@login_required(login_url='/login/')
+def down(request, quest_id):
+    user = Question.objects.filter(id=quest_id)[0]
+    user.rathing -=1
+    user.save()
     return redirect(request.GET.get('now','/'))

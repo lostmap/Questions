@@ -20,7 +20,13 @@ class User(AbstractUser):
 """
 class CustomUserManager(models.Manager):
     def top_5(self):
-        return self.all().order_by('-ranking')[:5]
+        for user in self.all():
+            user.ranking = sum([question.rathing for question in user.question_set.all()])
+            user.save()
+        return self.order_by('-ranking')[:5]
+    
+    def get_ranking(self, profile):
+        return self.filter(user__username=profile)[0].ranking
 
     def dublicate_entry(self, username):
         dublicate = True
@@ -43,12 +49,12 @@ class CustomUser(models.Model):
     upload = models.ImageField(upload_to="media", null=True, blank=True, default="media/empty.gif")
     ranking = models.IntegerField(default=0)
 
-    class Meta:
-        ordering = ['-ranking']
+    #class Meta:
+    #    ordering = ['-ranking']
 
     def __str__(self):
         return self.user.username
-
+        
 class TagManager(models.Manager):
     def popular(self):
         return self.filter(count__gt=0).order_by('-count')[:5]
@@ -82,7 +88,7 @@ class QuestionManager(models.Manager):
         except Tag.DoesNotExist:
             tag = Tag(name=tag_name)
             tag.save()
-        tag.count += 1;
+        tag.count += 1
         tag.save()
         question.tags.add(tag)
         question.save()

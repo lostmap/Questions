@@ -49,9 +49,9 @@
             </div>
             <div class="horizontal-counter col-7 offset-5 offset-sm-5 col-sm-7 offset-md-0 col-md-5 col-lg-4 col-xl-3">  
                 <div class="input-group">
-                    <button type="button" class="btn btn-outline-danger merge-left-button minus-button"><i class="far fa-thumbs-down fa-lg"></i></button>
-                    <div class="form-control text-center merge-middle-button" name="first" disabled="disabled">1</div>
-                    <button type="button" class="btn  btn-outline-success merge-right-button"><i class="far fa-thumbs-up fa-lg"></i></button>
+                    <a href="{% url 'down' question.id %}?now={{ request.path | urlencode }}" class="btn btn-outline-danger merge-left-button minus-button"><i class="far fa-thumbs-down fa-lg"></i></a>
+                    <div class="form-control text-center merge-middle-button" name="first" disabled="disabled">{{ question.rathing }}</div>
+                    <a href="{% url 'up' question.id %}?now={{ request.path | urlencode }}" class="btn  btn-outline-success merge-right-button"><i class="far fa-thumbs-up fa-lg"></i></a>
                 </div>  
             </div>
         </div>
